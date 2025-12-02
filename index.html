@@ -3,292 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Favicon using a relative file path -->
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    <title>SMCC-CCIS Week 2025 – Campus Event</title>
+    <title>SMCC-CCIS Week 2025 &mdash; Campus Event Showcase</title>
 
-    <!-- Internal CSS (layout, classes, responsiveness) -->
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        *{
+            box-sizing: border-box;
+        }
+        body{
             margin: 0;
-            background-color: #f5f7fb;
-            color: #000000;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f6fb;
+            color: #222;
+            line-height: 1.6;
         }
-
-        .wrapper {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        header, nav, section, article, aside, footer {
-            padding: 15px 20px;
-        }
-
-        header {
-            background-color: #11a82d;
-            color: #fff;
-        }
-
-        nav {
-            background-color: #e1e8f0;
-        }
-
-        nav a {
-            margin-right: 15px;
+        a{
+            color: green;
             text-decoration: none;
-            color: #008d34;
-            font-weight: bold;
         }
-
-        .container {
+        a:hover{
+            text-decoration: underline;
+        }
+        .container{
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+        header{
+            background-color: #059142;
+            color: white;
+            padding: 18px 0 10px 0;
+            text-align: center;
+        }
+        header h1{
+            margin: 0;
+            font-size: 2rem;
+        }
+        header p{
+            margin: 4px 0 0;
+        }
+        nav{
+            background-color: #e2e8e2;
+            border-bottom: 1px solid #c3dfcf;
+        }
+        nav .container{
             display: flex;
             flex-wrap: wrap;
-            padding: 20px;
-            gap: 20px;
+            gap: 12px;
         }
-
-        .main-section {
-            flex: 3 1 250px;
+        nav a{
+            padding: 10px 14px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #045029;
         }
-
-        .sidebar {
-            flex: 1 1 200px;
-            background-color: #ffffff;
-            border-radius: 6px;
-            padding: 15px;
-            box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+        nav a:hover{
+            background-color: #cfe7d8;
         }
-
-        .card {
-            background-color: #ffffff;
+        section{
+            padding: 20px 0;
+        }
+        .card{
+            background-color: white;
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .card h2{
+            margin-top: 0;
+        }
+        .two-column{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+        .two-column .main{
+            flex: 2;
+            min-width: 0;
+        }
+        .two-column .side-panel{
+            flex: 1;
+            min-width: 0;
+        }
+        .hero-image{
+            width: 100%;
+            border-radius: 10px;
+            border: 3px solid #c9e5d3;
+            display: block;
+            margin-top: 12px;
+        }
+        .code-block{
+            background-color: #0f2a23;
+            color: white;
+            padding: 14px 16px;
             border-radius: 8px;
-            padding: 15px 20px;
-            box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-
-        .code-block {
-            background-color: #222;
-            color: #e8e8e8;
-            padding: 10px;
-            border-radius: 6px;
             overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
         }
-
-        button.primary-btn {
-            background-color: #004b8d;
-            color: #ffffff;
+        kbd{
+            background-color: #eee;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            padding: 2px 6px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 12px;
+        }
+        .btn{
+            display: inline-block;
+            background-color: #099635;
+            color: white;
             border: none;
             padding: 8px 14px;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
-        }
-
-        button.primary-btn:hover {
-            background-color: #0065c3;
-        }
-
-        footer {
-            margin-top: auto;
-            background-color: #004b8d;
-            color: #fff;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        .hidden-message {
-            display: none;
-            margin-top: 10px;
             font-weight: bold;
-            color: #006600;
+            margin-bottom: 10px;
         }
-
-        /* Responsive layout using media query */
-        @media (max-width: 700px) {
-            .container {
-                flex-direction: column;
-            }
-
-            nav a {
-                display: inline-block;
-                margin-bottom: 6px;
-            }
+        .btn:hover{
+            opacity: 10;
+        }
+        .faq-question{
+            font-weight: bold;
+            margin: 8px;
+        }
+        samp{
+            background-color: #172b1f;
+            padding: 3px 6px;
+            border-radius: 3px;
+            color: #c7ffd9;
         }
     </style>
 
-    <script>
-        // Simple JavaScript interactivity for the button
-        function toggleMessage() {
-            const msg = document.getElementById("info-message");
-            if (msg.style.display === "block") {
-                msg.style.display = "none";
-            } else {
-                msg.style.display = "block";
-            }
-        }
-
-    </script>
-
 </head>
-<body id="page-root">
-    <div class="wrapper">
+<body>
+    <!--HEADER-->
+    <header id="hero">
+        <div class="container">
+            <h1>SMCC-CCIS Week 2025 &mdash; Campus Event Showcase 🎓🎉</h1>
+            <p>Celebrating innovation, technology, and collaboration across the campus.</p>
+        </div>
+    </header>
 
-        <!-- Semantic header with ID and class -->
-        <header id="top-header" class="section-header">
-            <h1>SMCC-CCIS Week 2025 – Campus Event &#127891;&#127881;</h1>
-            <p>Celebrating innovation, technology and collaboration across the campus.</p>
-        </header>
-
-        <!-- Semantic navigation -->
-        <nav>
+    <!--NAV-->
+    <nav>
+        <div class="container">
             <a href="#overview">Overview</a>
             <a href="#schedule">Schedule</a>
-            <a href="#locatin">Location</a>
+            <a href="#location">Location</a>
             <a href="#faq">FAQ</a>
-        </nav>
-
-        <!-- MAIN LAYOUT AREA -->
-        <div class="container">
-
-            <!-- Main content using section/article and divs with classes -->
-            <section class="main-section">
-
-                <!-- Layout / Div / Classes / IDs / Buttons / JS -->
-                <article id="layout" class="card">
-                    <h2>Event Overview &#9733</h2>
-
-                    <div class="info-box">
-                        <p>
-                            SMCC-CCIS Week 2025 is an annual campus event that highlights student projects, industry workshops about development, cybersecurity, artificial intelligence, and more.
-                            </p><p>
-                            Join us for a week of learning, networking, and fun &#x2665; as we celebrate the power of technology in education & innovation.
-                        </p>
-                    </div>
-
-                    <!-- Buttons using JavaScript -->
-                    <button class="primary-btn" onclick="toggleMessage()">Toggle Info Message</button>
-
-                    <p id="info-message" class="hidden-message">
-                        JavaScript is working! &#127881; You just toggled this message using a button.
-                    </p>
-                </article>
-
-                <!-- Iframe + Responsive Example -->
-                <article class="card">
-                    <h2>2. Embedded Content with Iframe</h2>
-                    <p>
-                        Below is an embedded YouTube video using an <code>&lt;iframe&gt;</code>.
-                        The iframe uses a relative width percentage to help responsiveness.
-                    </p>
-                    <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:8px;">
-                        <iframe style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" src="https://www.youtube.com/embed/qz0aGYrrlhU?si=l3TdMHTcJTKbjxBc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </article>
-
-                <!-- File paths + image -->
-                <article class="card">
-                    <h2>3. File Paths and Relative Image</h2>
-                    <p>
-                        The image below is loaded from a <em>relative file path</em>:
-                        <code>images/profile.jpg</code>.
-                    </p>
-                    <img src="images/mark.jpg" alt="Sample profile photo"
-                        style="max-width: 160px; border-radius: 10%; border: 3px solid #004b8d;">
-                </article>
-
-                <!-- Computercode tags -->
-                <article id="code" class="card">
-                    <h2>4. Computer Code Tags</h2>
-                    <p>We can show code and computer-related text using special tags:</p>
-
-                    <div class="code-block">
-                        <pre><code>&lt;pre&gt; and &lt;code&gt; show preformatted code:
-
-                        function hello() {
-                            console.log("Hello, world!");
-                        }
-                        </code></pre>
-                    </div>
-
-                    <p>
-                        Press <kbd>Ctrl</kbd> + <kbd>S</kbd> to save your file.  
-                        Program output example using <code>&lt;samp&gt;</code>:
-                        <samp>Build successful. No errors found.</samp>
-                    </p>
-                </article>
-
-                <!-- Entities, symbols, emojis, URL encoding -->
-                <article id="symbols" class="card">
-                    <h2>5. Entities, Symbols, Emojis & URL Encoding</h2>
-                    <p>
-                        HTML <strong>entities</strong> and <strong>symbols</strong>:
-                        &copy; 2025 InfoHub &mdash; All rights reserved.  
-                        Heart symbol: &hearts;  
-                        Check symbol: &#10003; (✓)
-                    </p>
-                    <p>
-                        Emojis add expression: &#128516;&#128640;&#127793;
-                    </p>
-                    <p>
-                        Example of a URL-encoded search query:
-                    </p>
-                    <div class="code-block">
-                        <code>https://example.com/search?query=HTML%20Advanced%20Topics%21</code>
-                    </div>
-                </article>
-
-                <!-- HTML vs XHTML -->
-                <article id="xhtml" class="card">
-                    <h2>6. HTML vs XHTML</h2>
-                    <p>Below is a simple comparison of HTML and XHTML syntax:</p>
-
-                    <div class="code-block">
-                        <pre><code>&lt;!-- HTML version (not self-closed) --&gt;
-                        &lt;img src="images/profile.jpg" alt="Profile image"&gt;
-
-                        &lt;!-- XHTML-style version (self-closed, lowercase, quoted attributes) --&gt;
-                        &lt;img src="images/profile.jpg" alt="Profile image" /&gt;
-                        </code></pre>
-                    </div>
-
-                    <p>
-                        XHTML is stricter and requires properly closed tags, lowercase names, and quoted attributes.
-                    </p>
-                </article>
-
-            </section>
-
-            <!-- Sidebar using semantic aside -->
-            <aside class="sidebar">
-                <h3>Quick Info Panel</h3>
-                <p>
-                    This <code>&lt;aside&gt;</code> acts as a sidebar. It demonstrates
-                    how semantic tags improve layout and meaning.
-                </p>
-                <p>
-                    This page follows a simple <strong>style guide</strong>:
-                    lowercase tag names, consistent indentation, semantic elements,
-                    meaningful class and ID names, and UTF-8 charset.
-                </p>
-                <p>
-                    Character encoding is defined using:
-                </p>
-                <div class="code-block">
-                    <code>&lt;meta charset="UTF-8"&gt;</code>
-                </div>
-            </aside>
-
+            <a href="#tech-demo">Tech Demo</a>
         </div>
+    </nav>
+    
+    <!--MAIN CONTENT-->
+    <main class="container">
+        <!--Overview-->
+        <section id="overview">
+            <div class="card">
+                <div class="two-column">
+                    <div class="main">
+                        <h2>Event Overview 🔩</h2>
+                        <p>SMCC-CCIS Week 2025 is an annual campus event that highlights student projects, industry talks, and hands-on workshops about software development, cybersecurity, artificial intelligence, and more.</p>
 
-        <!-- Semantic footer with entities and symbols -->
-        <footer>
-            <p>
-                Built with advanced HTML concepts &middot; InfoHub Sample &nbsp;&starf; &nbsp; &copy; 2025
-            </p>
-        </footer>
+                        <p>Join us for a week of learning, networking, and fun &hearts; as we celebrate the power of technology in education and innovation.</p>
 
-    </div>
+                        <img src="ccis.jpg" alt="SMCC-CCIS Week 2025" class="hero-image">
+                    </div>
+                    <aside class="side-panel" style="margin-bottom: 0;">
+                        <h3>Event Info &amp; Contacts</h3>
+                        <p>SMCC-CCIS Week 2025 is organized by the College of Computing &amp; Information Sciences.</p>
+                        <p>For inquiries, email:
+                            <a href="mailto:ccisweek@myschool.edu">ccisweek@myschool.edu</a>
+                        </p>
+
+                        <h4>Event Highlights</h4>
+                        <ul>
+                            <li>Live coding sessions</li>
+                            <li>Industry speakers</li>
+                            <li>Project exhibits</li>
+                        </ul>
+
+                        <h4><strong>Character Encoding</strong></h4>
+                        <p>This page uses UTF-8 encoding, defined as:</p>
+                        <div class="code-block">
+                            <code>&lt;meta charset="UTF-8"&gt;</code>
+                        </div>
+                        <p>Special characters &amp; entities: &copy; 2025 SMCC-CCIS Week-All rights reserved.</p>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!--EVENT SCHEDULE-->
+        <section id="schedule">
+            <div class="card">
+                <h2>Event Schedule 	&#10004;</h2>
+                <p>Here is a simplified view of the main events:</p>
+                <ul>
+                    <li>Day 1 &mdash; Opening Program & Keynote Talks</li>
+                    <li>Day 2 &mdash; Coding Hackathon 	&#128187;</li>
+                    <li>Day 3 &mdash; Robotics & loT Exhibition 	&#129302;</li>
+                    <li>Day 4 &mdash; Cybersecurity Awareness Sessions</li>
+                    <li>Day 5 &mdash; Project Showcase & Awarding Ceremony 	&#127942;</li>
+                </ul>
+            </div>
+        </section>
+
+        <!--EVENT LOCATION-->
+        <section id="location">
+            <div class="card">
+                <h2>Event Location & Maр</h2>
+                <p>All events will be held at the <strong>SMCC Main Campus - IT Building.</strong>  Use the embedded map below to find the location easily.</p>
+
+                <div class="iframe-wrapper">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126113.1420172703!2d125.24765768906249!3d8.968858718837586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3301ca2f04581cbb%3A0xe4e2656c7835d5f2!2sSaint%20Michael%20College%20of%20Caraga!5e0!3m2!1sen!2sph!4v1764709106031!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+            </div>
+        </section>
+
+        <!--FAQ-->
+        <section id="faq">
+            <div class="card">
+                <h2>Frequently Asked Questions (FAQ)</h2>
+                <p>Use the buttons below to interact with the page:
+</p>
+
+                <button class="btn" onclick="toggleFAQ()">Toggle FAQ Visibility</button>
+                
+                <div id="faq-content">
+                    <p class="faq-question">1. Is the event open to all students?</p>
+                    <p>Yes, the event is open to all departments and year levels.</p>
+
+                    <p class="faq-question">2. Do I need to register?</p>
+                    <p>Registration is required for competitions and workshops.</p>
+
+                    <p class="faq-question">3. Is there a registration fee?</p>
+                    <p>No, all SMCC-CCIS Week 2025 activities are free of charge.</p>
+
+                    <p class="faq-question">4. Where can i see updates?</p>
+                    <p>Updates will be posted on the official SMCC website &amp; social media pages.</p>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!--TECH DEMO AND DEVELOPER NOTES-->
+        <section id="tech-demo">
+            <article class="card">
+                <h2>Tech Demo &amp; Developer Notes</h2>
+                <h3>Sample Command (Using &lt;pre&gt; and &lt;code&gt;)</h3>
+            </article>
+        </section>
+
+
+        
+    </main>
+
 </body>
 </html>
