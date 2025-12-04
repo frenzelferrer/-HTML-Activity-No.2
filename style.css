@@ -180,10 +180,14 @@ footer {
     margin-top: 30px;
 }
 
-/* ===== Responsive Layout ===== */
+/* ===== Responsive Layout for Smaller Screens ===== */
+
+/* For screens 768px and smaller (tablets and mobile devices) */
 @media (max-width: 768px) {
+
     .two-column {
         flex-direction: column;
+        gap: 10px; /* Reduced gap between elements */
     }
 
     nav .container {
@@ -194,31 +198,28 @@ footer {
     nav a {
         display: block;
         margin-bottom: 4px;
-    }
-}
-
-@media (max-width: 600px) {
-    .card {
-        font-size: 14px;
+        padding: 10px 12px;
+        text-align: left;
     }
 
     header h1 {
-        font-size: 22px; /* Adjusting font size for smaller screens */
+        font-size: 22px; /* Adjusted font size for smaller screens */
     }
 
-    nav a {
-        font-size: 16px;
-        padding: 8px 12px;
-        text-align: left; /* Align links to the left on small screens */
+    .card {
+        padding: 12px 15px;
+    }
+
+    .card h2 {
+        font-size: 18px;
     }
 
     .hero-image {
-        width: 100%;
-        height: auto;
+        margin-top: 10px;
     }
 
     .iframe-wrapper {
-        padding-bottom: 75%; /* Adjusting the iframe aspect ratio for smaller screens */
+        padding-bottom: 70%; /* Adjusted iframe aspect ratio for small screens */
     }
 
     footer {
@@ -226,3 +227,35 @@ footer {
         padding: 10px 6px;
     }
 }
+
+/* For screens 600px and smaller (mobile phones) */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 20px;
+    }
+
+    nav a {
+        font-size: 16px;
+        padding: 8px 12px;
+        text-align: left; /* Align navigation links to the left */
+    }
+
+    .card {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+
+    .btn {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .code-block {
+        font-size: 12px; /* Adjusted code block font size */
+    }
+
+    .iframe-wrapper {
+        padding-bottom: 75%; /* Further adjusted for smaller screens */
+    }
+}
+    
